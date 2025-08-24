@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class DukeGPT {
 
     public void greet() {
@@ -5,7 +7,15 @@ public class DukeGPT {
     }
 
     public void echo() {
+        Scanner sc = new Scanner(System.in);
+        String message = sc.nextLine();
 
+        while (!message.equals("bye")) {
+            String finalMessage = message;
+            this.printLine(() -> System.out.println(finalMessage));
+            message = sc.nextLine();
+        }
+        this.exit();
     }
 
     public void exit() {
@@ -22,6 +32,6 @@ public class DukeGPT {
     public static void main(String[] args) {
         DukeGPT duke = new DukeGPT();
         duke.greet();
-        duke.exit();
+        duke.echo();
     }
 }
