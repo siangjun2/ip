@@ -23,6 +23,8 @@ public class DukeGPT {
                 this.addHelper(message);
             } else if (message.startsWith("mark ") || message.startsWith("unmark ")) { //Marking as done or not done
                 this.markHelper(message);
+            } else if (message.startsWith("delete ")) {
+                this.deleteHelper(message);
             } else if (message.equals("list")) { //Listing items
                 this.listHelper();
             } else {
@@ -106,6 +108,27 @@ public class DukeGPT {
             this.messages.add(t);
             String tm = t.toString();
             this.printLine(() -> System.out.println("\tadded: " + tm + "\n\tNow you have " + this.messages.size() + " tasks in the list."));
+        }
+    }
+
+    private void deleteHelper(String message) {
+        String[] parts = message.split(" ");
+        if (parts.length == 2) {
+            try {
+                int index = Integer.valueOf(parts[1]) - 1;
+                if (!(index >= 0 && index < this.messages.size())) {
+                    NumberFormatException e = new NumberFormatException("Out of index");
+                    throw e;
+                }
+                Task t = this.messages.remove(index);
+                this.printLine(() -> System.out.println("\tNoted. I've removed this task:\n\t\t" + t + "\n\tNow you have " + this.messages.size() + " tasks in the list."));
+            } catch (NumberFormatException e) {
+                this.printLine(() -> System.out.println("\tInvalid integer used for delete!\t" + e));
+            } catch (IndexOutOfBoundsException e) {
+                this.printLine(() -> System.out.println("\tIndex out of bounds!\t" + e));
+            }
+        } else {
+            this.printLine(() -> System.out.println("\tInvalid usage of delete"));
         }
     }
 
