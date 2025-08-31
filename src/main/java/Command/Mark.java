@@ -24,6 +24,9 @@ public class Mark implements Command {
             List<Task> t = storage.getTasks();
             t.get(this.index).setCompleted(this.mark);
             storage.readToFile();
+            Ui.display(mark ?
+                    new String[]{"Nice! I've marked this task as done:", t.get(this.index).toString()} :
+                    new String[]{"Ok! I've marked this task as not done yet:", t.get(this.index).toString()});
         }
     }
 }

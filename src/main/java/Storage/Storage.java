@@ -22,7 +22,6 @@ import java.util.regex.Pattern;
 public class Storage {
     private static final String PATH = String.valueOf(Paths.get(System.getProperty("user.dir"),
             "data", "duke.txt"));
-
     private final List<Task> tasks;
 
     public Storage() {

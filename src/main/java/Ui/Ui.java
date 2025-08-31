@@ -5,7 +5,7 @@ import java.util.Random;
 public class Ui {
     private static final Random r = new Random();
     private static final String[] faces = {"^_^", "O_O", "Y_Y", "U_U", "o_o", "C_C", "P_P"};
-    private static final String[] hands = {"/", "_/", "_|", "d", "P", "c", "C"};
+    private static final String[] hands = {"/", "_/", "_|", "d", "P", "c", "_P", "o/"};
     private static final String border = "---------------------------------------------------------";
 
     public static void display(String... messages) {
@@ -25,7 +25,7 @@ public class Ui {
     }
 
     private static String getEmotion() {
-        return "(" + Ui.faces[r.nextInt(Ui.faces.length)] + ")" + Ui.hands[r.nextInt(Ui.hands.length)];
+        return "DukeGPT || (" + Ui.faces[r.nextInt(Ui.faces.length)] + ")" + Ui.hands[r.nextInt(Ui.hands.length)];
     }
 
     private static void printLine(String message) {

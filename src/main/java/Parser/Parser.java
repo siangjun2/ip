@@ -2,7 +2,18 @@ package Parser;
 
 import Command.Command;
 import Exception.DukeException;
+import TaskList.Deadline;
+import TaskList.Event;
+import TaskList.Task;
+import TaskList.ToDo;
 import Ui.Ui;
+import Command.Exit;
+import Command.Greet;
+import Command.Add;
+import Command.Invalid;
+import Command.ListOut;
+import Command.Mark;
+import Command.Delete;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -25,37 +36,87 @@ public class Parser {
         } catch (DateTimeException e) {
             throw new DukeException("Invalid string used to convert to date! Attempted to convert " + s);
         }
-        throw new DukeException("CRITICAL regex error. Should not be able to reach here");
+        throw new DukeException("Invalid string format used to convert to date! Attempted to convert " + s);
     }
 
     public static Command parse(String s) {
-        """
-        delete 3
-        mark 3
-        list todo borrow book
-        deadline return book /by Sunday
-        event project meeting/from /to        
-        """
+        s = s.strip();
+        if (s.equals("bye") | s.equals("exit")) {
+            return new Exit();
+        } else if (s.equals("list")) {
+            return new ListOut();
+        } else if (s.startsWith("delete")) {
+            try {
+                int index = Parser.extractIndex(s);
+                return new Delete(index);
+            } catch (DukeException e) {
+                Ui.displayError(e);
+            }
+        } else if (s.startsWith("mark") | s.startsWith("unmark")) {
+            try {
+                int index = Parser.extractIndex(s);
+                return new Mark(index, s.startsWith("mark"));
+            } catch (DukeException e) {
+                Ui.displayError(e);
+            }
+        } else if (s.startsWith("deadline") | s.startsWith("event") | s.startsWith("todo")) {
+            try {
+                return Parser.createAdd(s);
+            } catch (DukeException e) {
+                Ui.displayError(e);
+            }
+        }
+        return new Invalid();
     }
 
-//    String[] parts = message.split(" ");
-//        if (parts.length == 2) {
-//        try {
-//            int index = Integer.valueOf(parts[1]) - 1;
-//            if (!(index >= 0 && index < this.messages.size())) {
-//                NumberFormatException e = new NumberFormatException("Out of index");
-//                throw e;
-//            }
-//            this.messages.get(index).setCompleted(message.startsWith("mark "));
-//            if (message.startsWith("mark ")) {
-//                this.printLine(() -> System.out.println("\tNice! I've marked this task as done:\n\t\t" + this.messages.get(index)));
-//            } else {
-//                this.printLine(() -> System.out.println("\tOk! I've marked this task as not done yet:\n\t\t" + this.messages.get(index)));
-//            }
-//        } catch (NumberFormatException e) {
-//            this.printLine(() -> System.out.println("\tInvalid integer used for mark/unmark!\t" + e));
-//        }
-//    } else {
-//        this.printLine(() -> System.out.println("\tInvalid usage of mark/unmark!"));
-//    }
+    private static Command createAdd(String s) throws DukeException {
+        if (s.startsWith("todo")) {
+            return new Add(new ToDo(s.substring(5)));
+        } else if (s.startsWith("deadline")) {
+            String re = "deadline\\s+(.+)\\s+/by\\s+(.+)";
+
+            Pattern p = Pattern.compile(re, Pattern.CASE_INSENSITIVE);
+            Matcher m = p.matcher(s);
+            if (m.find()) {
+                try {
+                    LocalDate date = Parser.stringToDate(m.group(2));
+                    return new Add(new Deadline(m.group(1).strip(), date));
+                } catch (DukeException e) {
+                    throw new DukeException("While creating deadline - " + e.toString());
+                }
+            } else {
+                throw new DukeException("Invalid deadline format used! Given " + s);
+            }
+        } else if (s.startsWith("event")) {
+            String re = "event\\s+(.+)\\s+/from\\s+(.+)\\s+/to\\s+(.+)";
+
+            Pattern p = Pattern.compile(re, Pattern.CASE_INSENSITIVE);
+            Matcher m = p.matcher(s);
+            if (m.find()) {
+                try {
+                    LocalDate from = Parser.stringToDate(m.group(2));
+                    LocalDate to = Parser.stringToDate(m.group(3));
+                    return new Add(new Event(m.group(1).strip(), from, to));
+                } catch (DukeException e) {
+                    throw new DukeException("While creating event - " + e.toString());
+                }
+            } else {
+                throw new DukeException("Invalid event format used! Given " + s);
+            }
+        } else {
+            return new Invalid();
+        }
+    }
+
+    private static int extractIndex(String s) throws DukeException{
+        String[] parts = s.split(" ");
+        if (parts.length != 2) {
+            throw new DukeException("Invalid format used for delete/mark command");
+        }
+        try {
+            return Integer.parseInt(parts[1]) - 1;
+        } catch (NumberFormatException e) {
+            throw new DukeException("Invalid integer used for delete/mark command");
+        }
+    }
 }
