@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import java.util.regex.*;
 
 public class DukeGPT {
-    private List<Task> messages = new ArrayList<Task>();
+    private final List<Task> messages = new ArrayList<Task>();
 
     public void greet() {
         this.printLine(() -> System.out.println("\tHello! I'm DukeGPT\n\tWhat can I do for you?"));
