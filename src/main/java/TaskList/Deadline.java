@@ -1,15 +1,22 @@
 package TaskList;
 
-public class Deadline extends Task {
-    private final String by;
+import java.time.LocalDate;
 
-    public Deadline(String description, String by) {
+public class Deadline extends Task {
+    private final LocalDate by;
+
+    public Deadline(String description, LocalDate by) {
         super(description);
         this.by = by;
     }
 
     @Override
     public String toString() {
-        return "[D] " + super.toString() + " (by: " + this.by + ")";
+        return "[D]" + super.toString() + " (by: " + Task.dateToString(this.by) + ")";
+    }
+
+    @Override
+    public String toFileString() {
+        return "D" + super.toFileString() + " | " + this.by;
     }
 }

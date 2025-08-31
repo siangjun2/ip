@@ -1,11 +1,15 @@
 package TaskList;
 
-public class Task {
+import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
+public abstract class Task {
     private boolean completed = false;
     private final String description;
 
     public Task(String description) {
-        this.description = description;
+        this.description = description.strip();
     }
 
     public boolean getCompleted() {
@@ -18,6 +22,15 @@ public class Task {
 
     @Override
     public String toString() {
-        return "[" + (completed ? "X" : " ") + "] " + description;
+        return "[" + (this.completed ? "X" : " ") + "] " + this.description;
+    }
+
+    public String toFileString() {
+        return " | " + (this.completed ? "1" : "0") + " | " + this.description;
+    }
+
+    protected static String dateToString(LocalDate d) {
+        return d.getMonth().getDisplayName(TextStyle.SHORT, Locale.ENGLISH) + " " + d.getDayOfMonth() +
+                    " " + d.getYear();
     }
 }
