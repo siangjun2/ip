@@ -1,14 +1,16 @@
+import TaskList.Deadline;
+import TaskList.Event;
+import TaskList.Task;
+import TaskList.ToDo;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 import java.util.regex.*;
-import java.io.File;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.Files;
 import java.io.FileWriter;
-import java.time.LocalDate;
 
 public class DukeGPT {
     private final List<Task> messages = new ArrayList<Task>();

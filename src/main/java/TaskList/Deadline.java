@@ -1,4 +1,6 @@
-public class Deadline extends Task{
+package TaskList;
+
+public class Deadline extends Task {
     private final String by;
 
     public Deadline(String description, String by) {
