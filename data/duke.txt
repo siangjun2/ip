@@ -1,5 +1,9 @@
-T | 1 | read book
-D | 0 | return book | June 6th
-E | 0 | project meeting | Aug 6th 2pm | Aug 6th 4pm
+T | 0 | read book
 T | 1 | join sports club
-D | 0 | return thing | tmr
+D | 0 | return thing | 2023-09-01
+E | 1 | testing readToFile | 2025-09-01 | 2025-09-01
+E | 0 | testing readToFile | 2025-09-01 | 2025-09-01
+E | 0 | testing readToFile | 2025-09-01 | 2025-09-01
+T | 0 | whatever bullshit
+D | 0 | this fucking iP | 2025-12-12
+E | 0 | my funeral | 2025-12-12 | 2025-12-12
