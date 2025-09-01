@@ -2,6 +2,7 @@ package Command;
 
 import Exception.DukeException;
 import Storage.Storage;
+import TaskList.Event;
 import TaskList.Task;
 import Ui.Ui;
 
@@ -25,5 +26,13 @@ public class Delete implements Command{
             Ui.display( new String[]{"Noted. I've removed this task:", gone.toString(),
                         "Now you have " + t.size() + " tasks in the list."});
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Delete c) {
+            return this.index == c.index;
+        }
+        return false;
     }
 }

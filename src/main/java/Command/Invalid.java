@@ -9,4 +9,9 @@ public class Invalid implements Command {
     public void execute(Storage storage) throws DukeException {
         Ui.display("Invalid command. Please retype your command.");
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Invalid;
+    }
 }

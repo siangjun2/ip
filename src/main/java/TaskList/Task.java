@@ -33,4 +33,12 @@ public abstract class Task {
         return d.getMonth().getDisplayName(TextStyle.SHORT, Locale.ENGLISH) + " " + d.getDayOfMonth() +
                     " " + d.getYear();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Task t) {
+            return t.description.equals(this.description) && t.completed == this.completed;
+        }
+        return false;
+    }
 }

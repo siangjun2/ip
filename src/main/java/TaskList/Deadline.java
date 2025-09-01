@@ -19,4 +19,12 @@ public class Deadline extends Task {
     public String toFileString() {
         return "D" + super.toFileString() + " | " + this.by;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Deadline t) {
+            return super.equals(o) && t.by.equals(this.by);
+        }
+        return false;
+    }
 }

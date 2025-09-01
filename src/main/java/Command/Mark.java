@@ -29,4 +29,12 @@ public class Mark implements Command {
                     new String[]{"Ok! I've marked this task as not done yet:", t.get(this.index).toString()});
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Mark c) {
+            return this.index == c.index && this.mark == c.mark;
+        }
+        return false;
+    }
 }

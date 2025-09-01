@@ -25,7 +25,7 @@ public class Ui {
     }
 
     private static String getEmotion() {
-        return "DukeGPT || (" + Ui.faces[r.nextInt(Ui.faces.length)] + ")" + Ui.hands[r.nextInt(Ui.hands.length)];
+        return "Main.DukeGPT || (" + Ui.faces[r.nextInt(Ui.faces.length)] + ")" + Ui.hands[r.nextInt(Ui.hands.length)];
     }
 
     private static void printLine(String message) {

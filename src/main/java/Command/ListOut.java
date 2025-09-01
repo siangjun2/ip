@@ -26,4 +26,9 @@ public class ListOut implements Command {
             Ui.displayError(e);
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof ListOut;
+    }
 }

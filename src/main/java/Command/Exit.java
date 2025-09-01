@@ -10,4 +10,9 @@ public class Exit implements Command {
         Ui.display("That was fun! Hope to see you again!");
         storage.readToFile();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Exit;
+    }
 }

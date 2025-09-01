@@ -1,3 +1,5 @@
+package Main;
+
 import Exception.DukeException;
 import Storage.Storage;
 import Command.Greet;

@@ -150,4 +150,16 @@ public class Storage {
             Ui.displayError(e);
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Storage s) {
+            return this.tasks.equals(s.tasks);
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+
+    }
 }
