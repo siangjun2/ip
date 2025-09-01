@@ -8,6 +8,7 @@ import TaskList.Task;
 import TaskList.ToDo;
 import Ui.Ui;
 import Command.Exit;
+import Command.Find;
 import Command.Greet;
 import Command.Add;
 import Command.Invalid;
@@ -45,6 +46,8 @@ public class Parser {
             return new Exit();
         } else if (s.equals("list")) {
             return new ListOut();
+        } else if (s.startsWith("find")) {
+            return new Find(s.substring(5));
         } else if (s.startsWith("delete")) {
             try {
                 int index = Parser.extractIndex(s);

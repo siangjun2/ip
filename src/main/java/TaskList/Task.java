@@ -34,6 +34,10 @@ public abstract class Task {
                     " " + d.getYear();
     }
 
+    public boolean containsString(String s) {
+        return this.description.contains(s);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o instanceof Task t) {

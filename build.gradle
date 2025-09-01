@@ -42,7 +42,7 @@ test {
 }
 
 application {
-    mainClass.set("DukeGPT")
+    mainClass.set("Main/DukeGPT")
 }
 
 shadowJar {

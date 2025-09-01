@@ -4,5 +4,5 @@ import Exception.DukeException;
 import Storage.Storage;
 
 public interface Command {
-    public void execute(Storage storage) throws DukeException;
+    public abstract void execute(Storage storage) throws DukeException;
 }
