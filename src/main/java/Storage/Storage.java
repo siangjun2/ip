@@ -150,15 +150,4 @@ public class Storage {
             Ui.displayError(e);
         }
     }
-
-    public static void main(String[] args) {
-        Storage s = new Storage();
-        System.out.println(s.getTasks());
-        s.tasks.add(new Event("testing readToFile", LocalDate.now(), LocalDate.now()));
-        try {
-            s.readToFile();
-        } catch (Exception e) {
-            Ui.displayError(e);
-        }
-    }
 }
