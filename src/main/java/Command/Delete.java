@@ -8,13 +8,28 @@ import Ui.Ui;
 
 import java.util.List;
 
+/**
+ * Represents a {@code Delete} command, that deletes a {@link Task} to the task list.
+ */
 public class Delete implements Command{
+    /**
+     * Stores index of task to be deleted from storage
+     */
     private final int index;
 
+    /**
+     * Initialises command object with corresponding index
+     * @param index Index of task to be deleted
+     */
     public Delete(int index) {
         this.index = index;
     }
 
+    /**
+     * Executes the command, by deleting the task in the specified index in the storage
+     * @param storage   Storage currently being used
+     * @throws DukeException    Handles error during execution
+     */
     @Override
     public void execute(Storage storage) throws DukeException {
         if (storage.isEmpty()) {

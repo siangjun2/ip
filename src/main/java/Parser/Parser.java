@@ -20,7 +20,17 @@ import java.time.LocalDate;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+/**
+ * Class in charge of converting string inputs into more usable classes
+ */
 public class Parser {
+    /**
+     * Helper function that converts date in string format to LocalDate object.
+     * Accepts YYYY-MM-DD format. More format to be added in future
+     * @param s Date in string format
+     * @return Date in LocalDate format
+     * @throws DukeException Handles errors during execution
+     */
     public static LocalDate stringToDate(String s) throws DukeException {
         String re = "(\\d{4})-(\\d{2})-(\\d{2})";
         Pattern p = Pattern.compile(re);
@@ -39,6 +49,11 @@ public class Parser {
         throw new DukeException("Invalid string format used to convert to date! Attempted to convert " + s);
     }
 
+    /**
+     * Handles converting user inputs into executable commands
+     * @param s Input by users. Fixed to specified formats
+     * @return  Corresponding command from input s. Invalid if unsuccessful.
+     */
     public static Command parse(String s) {
         s = s.strip();
         if (s.equals("bye") | s.equals("exit")) {
@@ -69,6 +84,12 @@ public class Parser {
         return new Invalid();
     }
 
+    /**
+     * Internal helper function that handles different types of events to be added.
+     * @param s String input by user
+     * @return  Add command if successful. Else Invalid.
+     * @throws DukeException    Handles error in execution
+     */
     private static Command createAdd(String s) throws DukeException {
         if (s.startsWith("todo")) {
             return new Add(new ToDo(s.substring(5)));
@@ -108,6 +129,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Internal helper function to extract index and check format for mark and delete
+     * commands. Handles invalid formats.
+     * @param s String command by user
+     * @return  int index if successful
+     * @throws DukeException    Handles error in execution. Specifically wrong formatting.
+     */
     private static int extractIndex(String s) throws DukeException{
         String[] parts = s.split(" ");
         if (parts.length != 2) {

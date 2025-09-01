@@ -10,13 +10,26 @@ import Parser.Parser;
 
 import java.util.Scanner;
 
+/**
+ * Entry of the program.
+ */
 public class DukeGPT {
+    /**
+     * Instance of storage being used
+     */
     private final Storage storage;
 
+    /**
+     * Initialises instance of chatbot with storage
+     */
     public DukeGPT() {
         this.storage = new Storage();
     }
 
+    /**
+     * The main repeating loop, where users type command and bot
+     * responds accordingly.
+     */
     public void loop() {
         Command c = new Greet();
         Scanner sc = new Scanner(System.in);
@@ -31,6 +44,10 @@ public class DukeGPT {
         }
     }
 
+    /**
+     * Entry of program
+     * @param args  Optional args, not used
+     */
     public static void main(String[] args) {
         DukeGPT bot = new DukeGPT();
         bot.loop();
