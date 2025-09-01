@@ -19,23 +19,48 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Handles the io regarding files.
+ */
 public class Storage {
+    /**
+     * Hard coded path for temporary usage. Can be changed to be specified per use.
+     */
     private static final String PATH = String.valueOf(Paths.get(System.getProperty("user.dir"),
             "data", "duke.txt"));
+    /**
+     * List of tasks held by each Storage instance. Used to sync program and file.
+     */
     private final List<Task> tasks;
 
+    /**
+     * Initialises storage instance with list of tasks read from file.
+     */
     public Storage() {
         this.tasks = Storage.readFromFile();
     }
 
+    /**
+     * Returns if storage instance has empty list of tasks.
+     * Used for error checking.
+     * @return  boolean of whether list is empty
+     */
     public boolean isEmpty() {
         return this.tasks.isEmpty();
     }
 
+    /**
+     * Getter function to return lists of tasks for manipulation.
+     * @return  List of tasks
+     */
     public List<Task> getTasks() {
         return this.tasks;
     }
 
+    /**
+     * Class member that ensures the file path is valid.
+     * Prevents IOException from happening unexpectedly.
+     */
     private static void ensureExists() {
         try {
             Path p = Paths.get(Storage.PATH);
@@ -50,6 +75,10 @@ public class Storage {
         }
     }
 
+    /**
+     * Reads from file and converts to List of tasks for Storage instances
+     * @return  List of task
+     */
     public static List<Task> readFromFile() {
         //Ensure file path exists
         Storage.ensureExists();
@@ -126,6 +155,12 @@ public class Storage {
         return output;
     }
 
+    /**
+     * Writes current list of task back to file to update it.
+     * Typically used after modifications to tasks.
+     * Required as software specification requires updating as the program runs.
+     * @throws DukeException    Handles error during execution
+     */
     public void readToFile() throws DukeException {
         Path p = Paths.get(Storage.PATH);
         List<String> lines = new ArrayList<>();
@@ -140,6 +175,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Function that writes an additional line to file.
+     * Currently not used as having all functions use readToFile makes code a bit
+     * more maintainable. Could be used if software specifications change.
+     * @param text  String of characters to be added to file
+     */
     public static void appendToFile(String text){
         Storage.ensureExists();
         try {
@@ -157,9 +198,5 @@ public class Storage {
             return this.tasks.equals(s.tasks);
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

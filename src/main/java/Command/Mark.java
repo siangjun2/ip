@@ -7,15 +7,34 @@ import Exception.DukeException;
 
 import java.util.List;
 
+/**
+ * Represents a {@code Mark} command, that marks or unmarks a {@link Task} to the task list.
+ */
 public class Mark implements Command {
+    /**
+     * Stores index of task to be marked/ unmarked
+     */
     private final int index;
+    /**
+     * Stores boolean of whether task is completed
+     */
     private final boolean mark;
 
+    /**
+     * Initialises command object with corresponding index and boolean
+     * @param index Index of task being considered
+     * @param mark  Boolean of whether task is completed
+     */
     public Mark(int index, boolean mark) {
         this.index = index;
         this.mark = mark;
     }
 
+    /**
+     * Executes the command, by marking the task in the specified index in the storage
+     * @param storage   Storage currently being used
+     * @throws DukeException    Handles error during execvution
+     */
     @Override
     public void execute(Storage storage) throws DukeException {
         if (storage.isEmpty()) {
