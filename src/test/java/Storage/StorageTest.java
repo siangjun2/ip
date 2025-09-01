@@ -15,6 +15,5 @@ public class StorageTest {
         for (int i = 0; i < one.size(); i++) {
             assertEquals(one.get(i), two.get(i));
         }
-
     }
 }
