@@ -20,8 +20,9 @@ public class ListOut implements Command {
     @Override
     public void execute(Storage storage) throws DukeException {
         List<Task> t = storage.getTasks();
-        String[] output = new String[t.size()];
+        String[] output = new String[t.size()+ 1];
         IntStream.range(0,t.size()).forEach(i -> output[i] = ((i + 1) + ". " + t.get(i)));
+        output[t.size()] = "Here are your tasks! There are a total of " + t.size() + " tasks.";
         Ui.display(output);
     }
 
