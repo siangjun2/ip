@@ -1,11 +1,11 @@
 package command;
 
+import java.util.List;
+
+import exception.DukeException;
 import storage.Storage;
 import task.Task;
 import ui.Ui;
-import exception.DukeException;
-
-import java.util.List;
 
 /**
  * Represents a {@code Mark} command, that marks or unmarks a {@link Task} to the task list.

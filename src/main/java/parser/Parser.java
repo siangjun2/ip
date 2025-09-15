@@ -1,16 +1,24 @@
 package parser;
 
-import command.*;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import command.Add;
+import command.Command;
+import command.Delete;
+import command.Exit;
+import command.Find;
+import command.Greet;
+import command.Invalid;
+import command.ListOut;
+import command.Mark;
 import exception.DukeException;
 import task.Deadline;
 import task.Event;
 import task.ToDo;
 import ui.Ui;
-
-import java.time.DateTimeException;
-import java.time.LocalDate;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 /**
  * Class in charge of converting string inputs into more usable classes
@@ -47,6 +55,7 @@ public class Parser {
      * @return  Corresponding command from input s. Invalid if unsuccessful.
      */
     public static Command parse(String s) {
+        assert s != null;
         s = s.strip().toLowerCase();
         if (s.equals("greet")) {
             return new Greet();
@@ -132,7 +141,7 @@ public class Parser {
      * @return  int index if successful
      * @throws DukeException    Handles error in execution. Specifically wrong formatting.
      */
-    private static int extractIndex(String s) throws DukeException{
+    private static int extractIndex(String s) throws DukeException {
         String[] parts = s.split(" ");
         if (parts.length != 2) {
             throw new DukeException("Invalid format used for delete/mark command");

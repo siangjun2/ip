@@ -36,6 +36,7 @@ public class DukeGpt {
         Scanner sc = new Scanner(System.in);
 
         while (!(c instanceof Exit)) {
+            assert c != null;
             try {
                 c.execute(this.storage);
                 c = Parser.parse(sc.nextLine());
@@ -61,6 +62,7 @@ public class DukeGpt {
      * @return String format of last command
      */
     public String getCommandType() {
+        assert this.lastCommandType != null;
         return this.lastCommandType;
     }
 

@@ -1,11 +1,11 @@
 package command;
 
+import java.util.List;
+
 import exception.DukeException;
 import storage.Storage;
 import task.Task;
 import ui.Ui;
-
-import java.util.List;
 
 /**
  * Represents a {@code Delete} command, that deletes a {@link Task} to the task list.

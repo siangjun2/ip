@@ -1,13 +1,5 @@
 package storage;
 
-import task.Deadline;
-import task.Event;
-import task.Task;
-import task.ToDo;
-import ui.Ui;
-import exception.DukeException;
-import parser.Parser;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,6 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import exception.DukeException;
+import parser.Parser;
+import task.Deadline;
+import task.Event;
+import task.Task;
+import task.ToDo;
+import ui.Ui;
 
 /**
  * Handles the io regarding files.
@@ -180,7 +180,7 @@ public class Storage {
      * more maintainable. Could be used if software specifications change.
      * @param text  String of characters to be added to file
      */
-    public static void appendToFile(String text){
+    public static void appendToFile(String text) {
         Storage.ensureExists();
         try {
             FileWriter fw = new FileWriter(Storage.PATH, true);
