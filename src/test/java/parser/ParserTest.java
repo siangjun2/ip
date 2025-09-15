@@ -1,14 +1,18 @@
 package parser;
 
-import command.*;
-import exception.DukeException;
-import ui.Ui;
-
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
+
+import org.junit.jupiter.api.Test;
+
+import command.Exit;
+import command.Invalid;
+import command.ListOut;
+import exception.DukeException;
+import ui.Ui;
+
 
 public class ParserTest {
     @Test
@@ -18,7 +22,7 @@ public class ParserTest {
             assertEquals(LocalDate.of(1234, 12, 31), Parser.stringToDate("1234-12-31"));
         } catch (DukeException e) {
             Ui.displayError(e);
-            assertEquals(1,0);
+            assertEquals(1, 0);
         }
     }
 

@@ -2,9 +2,17 @@ package task;
 
 import java.time.LocalDate;
 
+/**
+ * Deadline class to represent deadline tasks
+ */
 public class Deadline extends Task {
     private final LocalDate by;
 
+    /**
+     * Constructor of deadline
+     * @param description Description of task
+     * @param by LocalDate object representing deadline time
+     */
     public Deadline(String description, LocalDate by) {
         super(description);
         this.by = by;

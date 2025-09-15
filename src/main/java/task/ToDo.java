@@ -1,6 +1,13 @@
 package task;
 
-public class ToDo extends Task{
+/**
+ * Simple To do task without deadline
+ */
+public class ToDo extends Task {
+    /**
+     * Constructor of to do class
+     * @param description Description of task
+     */
     public ToDo(String description) {
         super(description);
     }

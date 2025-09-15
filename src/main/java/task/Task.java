@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
+/**
+ * Class to abstract common functionality of all tasks
+ */
 public abstract class Task {
     private boolean completed = false;
     private final String description;
@@ -30,8 +33,8 @@ public abstract class Task {
     }
 
     protected static String dateToString(LocalDate d) {
-        return d.getMonth().getDisplayName(TextStyle.SHORT, Locale.ENGLISH) + " " + d.getDayOfMonth() +
-                    " " + d.getYear();
+        return d.getMonth().getDisplayName(TextStyle.SHORT, Locale.ENGLISH) + " " + d.getDayOfMonth()
+                + " " + d.getYear();
     }
 
     public boolean containsString(String s) {

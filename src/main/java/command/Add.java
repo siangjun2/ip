@@ -1,11 +1,11 @@
 package command;
 
+import java.util.List;
+
 import exception.DukeException;
 import storage.Storage;
-import ui.Ui;
 import task.Task;
-
-import java.util.List;
+import ui.Ui;
 
 /**
  * Represents an Add command, that adds a {@link Task} to the task list.

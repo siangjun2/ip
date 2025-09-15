@@ -2,10 +2,25 @@ package task;
 
 import java.time.LocalDate;
 
-public class Event extends Task{
+/**
+ * Event class representing event subclass of Task
+ */
+public class Event extends Task {
+    /**
+     * Represents when the event starts
+     */
     private final LocalDate from;
+    /**
+     * Represents when the event ends
+     */
     private final LocalDate to;
 
+    /**
+     * Constructor of event class
+     * @param description Description of event
+     * @param from When the event starts
+     * @param to When the event ends
+     */
     public Event(String description, LocalDate from, LocalDate to) {
         super(description);
         this.from = from;
@@ -14,8 +29,8 @@ public class Event extends Task{
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + Task.dateToString(this.from) +
-                    " to: " + Task.dateToString(this.to) + ")";
+        return "[E]" + super.toString() + " (from: " + Task.dateToString(this.from)
+                + " to: " + Task.dateToString(this.to) + ")";
     }
 
     @Override

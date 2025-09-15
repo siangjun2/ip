@@ -1,10 +1,7 @@
 package ui;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
