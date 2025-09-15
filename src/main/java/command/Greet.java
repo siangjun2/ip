@@ -1,6 +1,7 @@
 package command;
 
 import exception.DukeException;
+import notebook.NoteBook;
 import storage.Storage;
 import ui.Ui;
 
@@ -14,7 +15,7 @@ public class Greet implements Command {
      * @throws DukeException
      */
     @Override
-    public String[] execute(Storage storage) throws DukeException {
+    public String[] execute(Storage storage, NoteBook notebook) throws DukeException {
         Ui.display("Hi! I'm main.DukeGpt! Nice to meet you!");
         return new String[]{"Hi! I'm main.DukeGpt! Nice to meet you!"};
     }

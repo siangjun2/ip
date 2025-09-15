@@ -1,6 +1,7 @@
 package command;
 
 import exception.DukeException;
+import notebook.NoteBook;
 import storage.Storage;
 import ui.Ui;
 
@@ -14,7 +15,7 @@ public class Invalid implements Command {
      * @throws DukeException
      */
     @Override
-    public String[] execute(Storage storage) throws DukeException {
+    public String[] execute(Storage storage, NoteBook notebook) throws DukeException {
         Ui.display("Invalid command. Please retype your command.");
         return new String[]{"Invalid command. Please retype your command."};
     }

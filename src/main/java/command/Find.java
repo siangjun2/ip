@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import exception.DukeException;
+import notebook.NoteBook;
 import storage.Storage;
 import task.Task;
 import ui.Ui;
@@ -35,7 +36,7 @@ public class Find implements Command {
      * @throws DukeException    Handles any error during execution
      */
     @Override
-    public String[] execute(Storage storage) throws DukeException {
+    public String[] execute(Storage storage, NoteBook notebook) throws DukeException {
         List<Task> tasks = storage.getTasks();
         List<Task> found = new ArrayList<>();
 

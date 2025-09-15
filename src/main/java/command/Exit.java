@@ -1,6 +1,7 @@
 package command;
 
 import exception.DukeException;
+import notebook.NoteBook;
 import storage.Storage;
 import ui.Ui;
 
@@ -14,7 +15,7 @@ public class Exit implements Command {
      * @throws DukeException    Handles error during execution
      */
     @Override
-    public String[] execute(Storage storage) throws DukeException {
+    public String[] execute(Storage storage, NoteBook notebook) throws DukeException {
         Ui.display("That was fun! Hope to see you again!");
         storage.readToFile();
         return new String[]{"That was fun! Hope to see you again!"};

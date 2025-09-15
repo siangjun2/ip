@@ -3,6 +3,7 @@ package command;
 import java.util.List;
 
 import exception.DukeException;
+import notebook.NoteBook;
 import storage.Storage;
 import task.Task;
 import ui.Ui;
@@ -36,7 +37,7 @@ public class Mark implements Command {
      * @throws DukeException    Handles error during execvution
      */
     @Override
-    public String[] execute(Storage storage) throws DukeException {
+    public String[] execute(Storage storage, NoteBook notebook) throws DukeException {
         if (storage.isEmpty()) {
             throw new DukeException("Index does not exist! Attempted to mark " + this.index);
         } else {

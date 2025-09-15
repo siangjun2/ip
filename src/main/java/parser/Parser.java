@@ -14,6 +14,9 @@ import command.Greet;
 import command.Invalid;
 import command.ListOut;
 import command.Mark;
+import command.NotesAdd;
+import command.NotesDelete;
+import command.NotesList;
 import exception.DukeException;
 import task.Deadline;
 import task.Event;
@@ -57,7 +60,9 @@ public class Parser {
     public static Command parse(String s) {
         assert s != null;
         s = s.strip().toLowerCase();
-        if (s.equals("greet")) {
+        if (s.startsWith("note ")) {
+            return Parser.handleNotes(s);
+        } else if (s.equals("greet")) {
             return new Greet();
         } else if (s.equals("bye") | s.equals("exit")) {
             return new Exit();
@@ -85,6 +90,35 @@ public class Parser {
             } catch (DukeException e) {
                 Ui.displayError(e);
             }
+        }
+        return new Invalid();
+    }
+
+    /**
+     * Handle command for notes related tasks
+     * @param s input string
+     * @return Appropriate command
+     */
+    private static Command handleNotes(String s) {
+        System.out.println(s);
+        assert s.startsWith("note ");
+        s = s.substring(5);
+        if (s.startsWith("add ")) {
+            String re = "add\\s+(.+)";
+            Pattern p = Pattern.compile(re, Pattern.CASE_INSENSITIVE);
+            Matcher m = p.matcher(s);
+            if (m.find()) {
+                return new NotesAdd(m.group(1));
+            }
+        } else if (s.startsWith("delete ")) {
+            try {
+                int index = Parser.extractIndex(s);
+                return new NotesDelete(index);
+            } catch (DukeException e) {
+                Ui.displayError(e);
+            }
+        } else if (s.startsWith("list")) {
+            return new NotesList();
         }
         return new Invalid();
     }

@@ -3,6 +3,7 @@ package command;
 import java.util.List;
 
 import exception.DukeException;
+import notebook.NoteBook;
 import storage.Storage;
 import task.Task;
 import ui.Ui;
@@ -30,7 +31,7 @@ public class Add implements Command {
      * @throws DukeException    Handles error during execution
      */
     @Override
-    public String[] execute(Storage storage) throws DukeException {
+    public String[] execute(Storage storage, NoteBook notebook) throws DukeException {
         List<Task> t = storage.getTasks();
         t.add(this.task);
         storage.readToFile();

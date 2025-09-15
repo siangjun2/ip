@@ -6,6 +6,8 @@ import command.Command;
 import command.Exit;
 import command.Greet;
 import exception.DukeException;
+import notebook.Note;
+import notebook.NoteBook;
 import parser.Parser;
 import storage.Storage;
 import ui.Ui;
@@ -18,6 +20,7 @@ public class DukeGpt {
      * Instance of storage being used
      */
     private final Storage storage;
+    private final NoteBook noteBook;
     private String lastCommandType;
 
     /**
@@ -25,6 +28,7 @@ public class DukeGpt {
      */
     public DukeGpt() {
         this.storage = new Storage();
+        this.noteBook = new NoteBook();
     }
 
     /**
@@ -38,7 +42,7 @@ public class DukeGpt {
         while (!(c instanceof Exit)) {
             assert c != null;
             try {
-                c.execute(this.storage);
+                c.execute(this.storage, this.noteBook);
                 c = Parser.parse(sc.nextLine());
             } catch (DukeException e) {
                 Ui.displayError(e);
@@ -50,7 +54,7 @@ public class DukeGpt {
         try {
             Command c = Parser.parse(input);
             this.lastCommandType = c.getClass().getSimpleName();
-            return c.execute(this.storage);
+            return c.execute(this.storage, this.noteBook);
         } catch (DukeException e) {
             Ui.displayError(e);
             return new String[]{"Invalid input!" + e.toString()};
