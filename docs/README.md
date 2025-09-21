@@ -2,7 +2,7 @@
 
 DukeGPT is a personal assistant chatbot that helps you manage tasks, notes, and more, with a friendly graphical interface.
 
-![Product Screenshot](./images/dukeGpt.png)
+![Product Screenshot](https://raw.githubusercontent.com/siangjun2/ip/master/docs/Ui.png)
 
 ---
 
