@@ -28,3 +28,4 @@ public class NotesAdd implements Command {
                 noteBook.get(noteBook.getSize() - 1).toString()};
     }
 }
+ 

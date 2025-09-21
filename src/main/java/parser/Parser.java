@@ -130,7 +130,7 @@ public class Parser {
      * @throws DukeException    Handles error in execution
      */
     private static Command createAdd(String s) throws DukeException {
-        if (s.startsWith("todo")) {
+        if (s.startsWith("todo") && s.length() > 5) {
             return new Add(new ToDo(s.substring(5)));
         } else if (s.startsWith("deadline")) {
             String re = "deadline\\s+(.+)\\s+/by\\s+(.+)";

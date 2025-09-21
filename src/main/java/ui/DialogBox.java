@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Circle;
 
 /**
  * Represents a dialog box consisting of an ImageView to represent the speaker's face
@@ -58,6 +59,12 @@ public class DialogBox extends HBox {
         var db = new DialogBox(text, img);
         db.flip();
         db.changeDialogStyle(commandType);
+        if (text.length == 1 && text[0].equals("Invalid command. Please retype your command.")) {
+            db.getStyleClass().add("error-label");
+        } else {
+            db.getStyleClass().add("duke-label");
+        }
+        DialogBox.makeImageRound(db.displayPicture);
         return db;
     }
 
@@ -75,5 +82,15 @@ public class DialogBox extends HBox {
         default:
                 // Do nothing
         }
+    }
+
+    private static void makeImageRound(ImageView imageView) {
+        double radius = Math.min(imageView.getFitWidth(), imageView.getFitHeight()) / 2;
+        Circle clip = new Circle(
+                imageView.getFitWidth() / 2,
+                imageView.getFitHeight() / 2,
+                radius
+        );
+        imageView.setClip(clip);
     }
 }

@@ -32,15 +32,23 @@
 
 .add-label {
     -fx-background-color: palegreen;
-    -fx-border-color : derive(palegreen, 80%)
+    -fx-border-color : 003204
 }
 
 .marked-label {
-    -fx-background-color: forestgreen;
-    -fx-border-color : derive(forestgreen, 80%)
+    -fx-background-color: #82ec82;
+    -fx-border-color : #003204
 }
 
 .delete-label {
-    -fx-background-color: lightpink;
-    -fx-border-color : derive(lightpink, 80%)
+    -fx-background-color: #ea7784;
+    -fx-border-color : #3e0000
+}
+
+.duke-label {
+    -fx-background-color: rgba(238, 139, 250, 0.15);
+}
+
+.error-label {
+    -fx-background-color: rgba(236, 18, 18, 0.5);
 }
