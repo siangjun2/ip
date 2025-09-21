@@ -170,7 +170,7 @@ public class Storage {
         try {
             Files.write(p, lines);
         } catch (IOException e) {
-            throw new DukeException("Error while attempting to read back to file");
+            throw new DukeException("Error while attempting to read back to file" + e.toString());
         }
     }
 

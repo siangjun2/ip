@@ -1,39 +1,29 @@
-# DukePro
+# DukeGPT User Guide
 
-> “Your mind is for having ideas, not holding them.” – David Allen ([source])
+DukeGPT is a personal assistant chatbot that helps you manage tasks, notes, and more, with a friendly graphical interface.
 
-DukePro frees your mind of having to remember things you need to do. It's:
+![Product Screenshot](https://raw.githubusercontent.com/siangjun2/ip/master/docs/Ui.png)
 
-- text-based  
-- easy to learn  
-- **FAST SUPER FAST** to use 🚀  
+---
 
 All you need to do is:
 
-1. [Download it from here](#).  
-2. Double-click it.  
-3. Add your tasks.  
-4. Let it manage your tasks for you 😉  
-
-And it is **FREE!**
+1. Download the latest release JAR file. 
+2. Run the file with ```java -jar dukeGPT.jar```
+3. Let dukeGPT manage your tasks for you 😉
 
 ---
 
 ## Features
 
-- ✅ Managing tasks  
-- ⏳ Managing deadlines *(coming soon)*  
-- ⏰ Reminders *(coming soon)*  
+- ✅ Manage different types of tasks: Todo, Deadline, Event
+- 📝 Add, list, and delete personal notes
+- ⏰ Set deadlines and events with date support
+- 🔍 Find tasks by keyword
+- ✔️ Mark and unmark tasks as done
+- 🗑️ Delete tasks and notes easily
+- 💬 Chat-like GUI with avatars
+- 💾 Save and load your tasks automatically
+- 🚪 Exit gracefully with a friendly message
 
 ---
-
-## For Java Programmers
-
-If you are a Java programmer, you can use it to practice Java too. Here's the `main` method:
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        Application.launch(MainApp.class, args);
-    }
-}
