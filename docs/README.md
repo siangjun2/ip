@@ -204,4 +204,3 @@ Bye. Hope to see you again soon!
 | note list       | List all notes                       |
 | note delete     | Delete a note                        |
 | bye             | Exit the application                 |
-
