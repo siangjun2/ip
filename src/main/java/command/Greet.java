@@ -16,8 +16,8 @@ public class Greet implements Command {
      */
     @Override
     public String[] execute(Storage storage, NoteBook notebook) throws DukeException {
-        Ui.display("Hi! I'm main.DukeGpt! Nice to meet you!");
-        return new String[]{"Hi! I'm main.DukeGpt! Nice to meet you!"};
+        Ui.display("Hi! I'm DukeGpt! Nice to meet you!");
+        return new String[]{"Hi! I'm DukeGpt! Nice to meet you!"};
     }
 
     @Override

@@ -32,7 +32,7 @@
 
 .add-label {
     -fx-background-color: palegreen;
-    -fx-border-color : 003204
+    -fx-border-color : #003204
 }
 
 .marked-label {

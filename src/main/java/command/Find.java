@@ -47,9 +47,9 @@ public class Find implements Command {
         }
 
         String[] output = new String[found.size() + 1];
-        IntStream.range(0, found.size()).forEach(i -> output[i] = ((i + 1) + ". " + found.get(i)));
-        output[found.size()] = "Here are your tasks! Found " + found.size() + " matching tasks.";
+        IntStream.range(0, found.size()).forEach(i -> output[i + 1] = ((i + 1) + ". " + found.get(i)));
+        output[0] = "Here are your tasks! Found " + found.size() + " matching tasks.";
         Ui.display(output);
-        return new String[]{"Here are your tasks! Found " + found.size() + " matching tasks.", Arrays.toString(output)};
+        return output;
     }
 }

@@ -62,13 +62,13 @@ public class Parser {
         s = s.strip().toLowerCase();
         if (s.startsWith("note ")) {
             return Parser.handleNotes(s);
-        } else if (s.equals("greet")) {
+        } else if (s.equals("greet") || s.equals("hi")) {
             return new Greet();
         } else if (s.equals("bye") | s.equals("exit")) {
             return new Exit();
         } else if (s.equals("list")) {
             return new ListOut();
-        } else if (s.startsWith("find")) {
+        } else if (s.startsWith("find") && s.length() > 5) {
             return new Find(s.substring(5));
         } else if (s.startsWith("delete")) {
             try {
