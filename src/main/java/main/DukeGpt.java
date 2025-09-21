@@ -6,7 +6,6 @@ import command.Command;
 import command.Exit;
 import command.Greet;
 import exception.DukeException;
-import notebook.Note;
 import notebook.NoteBook;
 import parser.Parser;
 import storage.Storage;
